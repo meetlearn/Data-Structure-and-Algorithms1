@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA</title>
+</head>
+
+<body>
+    <header>
+        <h1>Data structre and algorithms</h1>
+    </header>
+    <main>
+        <ol>
+            <a href=" Array"> Array</a>
+            <a href="Queue">Queue</a>
+            <a href="Linked list">Linked list</a>
+            <a href="Trees">Trees</a>
+            <a href="Sorting">Sorting</a>
+           
+        </ol>
+        <section id="Array" class="Array1">
+            <h1>Array</h1>
+            <p id="kth">
+                <h2>kth</h2>Input : a[] = {2, 3, 5, 9, 10}; <br>
+                k = 1;<br>
+                Output : 1 <br>
+                Explanation: Missing Element in the increasing <br>
+                sequence are {1,4, 6, 7, 8}. So k-th missing element <br>
+                is 1 <br>
+
+                Input : a[] = {2, 3, 5, 9, 10, 11, 12}; <br>
+                k = 4; <br>
+                Output : 7 <br>
+                Explanation: missing element in the increasing <br>
+                sequence are {1, 4, 6, 7, 8} so k-th missing <br>
+                element is 7</p>
+            <hr>
+
+            <p id="add serach">
+                <h2>add serach</h2> Input : arr[] = {5, 6, 7, 8, 9, 10, 1, 2, 3}, key = 3 <br>
+                Output : Found at index 8</p>
+            <hr>
+            <p id="find frequency">
+                <h2>find frequency</h2>
+                Input : a[] = {0, 5, 5, 5, 4}
+                x = 5
+                Output : 3
+
+                Input : a[] = {1, 2, 3}
+                x = 4
+                Output : 0</p>
+            <hr>
+
+
+        </section>
+
+        <section id="Queue">
+            <h1>Queue</h1>
+            <p id="circular queue">
+
+                #include <stdio.h>br
+
+                    # define max 6 <br>
+                    int queue[max]; // array declaration <br>
+                    int front=-1; <br>
+                    int rear=-1; <br>
+                    // function to insert an element in a circular queue <br>
+                    void enqueue(int element) <br>
+                    { <br>
+                    if(front==-1 && rear==-1) // condition to check queue is empty <br>
+                    { <br>
+                    front=0; <br>
+                    rear=0; <br>
+                    queue[rear]=element; <br>
+                    } <br>
+                    else if((rear+1)%max==front) // condition to check queue is full <br>
+                    { <br>
+                    printf("Queue is overflow.."); <br>
+                    } <br>
+                    else <br>
+                    { <br>
+                    rear=(rear+1)%max; // rear is incremented <br>
+                    queue[rear]=element; // assigning a value to the queue at the rear position. <br>
+                    } <br>
+                    } <br>
+
+                    // function to delete the element from the queue <br>
+                    int dequeue() <br>
+                    { <br>
+                    if((front==-1) && (rear==-1)) // condition to check queue is empty <br>
+                    { <br>
+                    printf("\nQueue is underflow.."); <br>
+                    } <br>
+                    else if(front==rear) <br>
+                    {
+                    printf("\nThe dequeued element is %d", queue[front]); <br>
+                    front=-1; <br>
+                    rear=-1; <br>
+                    } <br>
+                    else <br>
+                    { <br>
+                    printf("\nThe dequeued element is %d", queue[front]); <br>
+                    front=(front+1)%max; <br>
+                    } <br>
+                    } <br>
+                    // function to display the elements of a queue <br>
+                    void display() <br>
+                    { <br>
+                    int i=front; <br>
+                    if(front==-1 && rear==-1) <br>
+                    { <br>
+                    printf("\n Queue is empty.."); <br>
+                    } <br>
+                    else <br>
+                    { <br>
+                    printf("\nElements in a Queue are :"); <br>
+                    while(i<=rear) { printf("%d,", queue[i]); i=(i+1)%max; } } } int main() { int choice=1,x; //
+                        variables <br>
+                        declaration while(choice<4 && choice!=0) // while loop { printf("\n Press 1: Insert an
+                            element"); <br>
+                            printf("\nPress 2: Delete an element"); printf("\nPress 3: Display the element");
+                            printf("\nEnter <br>
+                            your choice"); scanf("%d", &choice); switch(choice) { case 1: printf("Enter the element
+                            which is to <br>
+                            be inserted"); scanf("%d", &x); enqueue(x); break; case 2: dequeue(); break; case 3:
+                            display(); }} <br>
+                            return 0; } </p>
+            <hr>
+            <p id="simple queue enqueue">
+                <h1>simple queue enqueue</h1>
+                procedure enqueue(data) <br>
+
+                if queue is full <br>
+                return overflow <br>
+                endif <br>
+
+                rear ← rear + 1 <br>
+                queue[rear] ← data <br>
+                return true <br>
+
+                end procedure <br>
+            </p>
+            <hr>
+            <p id="Simple dequeue">
+                <h1>Simple dequeue</h1>
+            procedure dequeue <br>
+   
+            if queue is empty <br>
+               return underflow <br>
+            end if <br>
+         
+            data = queue[front] <br>
+            front ← front + 1 <br>
+            return true <br>
+         
+         end procedure></p> 
+         <hr>
+         <p id="Priority queue"> <h1>Priority queue</h1>// C++ code to implement Priority Queue
+            // using Linked List
+            #include <bits/stdc++.h> <br>
+            using namespace std; <br>
+             
+            // Node <br>
+            typedef struct node <br>
+            { <br>
+                int data; <br>
+             
+                // Lower values indicate <br>
+                // higher priority <br>
+                int priority; <br>
+             
+                struct node* next; <br>
+             
+            } Node; <br>
+             
+            // Function to create a new node <br>
+            Node* newNode(int d, int p) <br>
+            { <br>
+                Node* temp = (Node*)malloc(sizeof(Node)); <br>
+                temp->data = d; <br>
+                temp->priority = p; <br>
+                temp->next = NULL; <br>
+             
+                return temp; <br>
+            } <br>
+             
+            // Return the value at head <br>
+            int peek(Node** head) <br>
+            { <br>
+                return (*head)->data; <br>
+            } <br>
+             
+            // Removes the element with the <br>
+            // highest priority from the list <br>
+            void pop(Node** head) <br>
+            { <br>
+                Node* temp = *head; <br>
+                (*head) = (*head)->next; <br>
+                free(temp); <br>
+            } <br>
+             
+            // Function to push according to priority <br>
+            void push(Node** head, int d, int p) <br>
+            { <br>
+                Node* start = (*head); <br>
+             
+                // Create new Node <br>
+                Node* temp = newNode(d, p); <br>
+             
+                // Special Case: The head of list has <br>
+                // lesser priority than new node. So <br>
+                // insert newnode before head node <br>
+                // and change head node. <br>
+                if ((*head)->priority > p) <br>
+                { <br>
+                     
+                    // Insert New Node before head <br>
+                    temp->next = *head; <br>
+                    (*head) = temp; <br>
+                } <br>
+                else <br>
+                { <br> <br>
+                     
+                    // Traverse the list and find a <br> <br>
+                    // position to insert new node <br> <br>
+                    while (start->next != NULL && <br> <br>
+                        start->next->priority < p) <br> <br>
+                    { <br> <br>
+                        start = start->next; <br> <br>
+                    } <br> <br>
+             
+                    // Either at the ends of the list <br> <br>
+                    // or at required position <br> <br>
+                    temp->next = start->next; <br> <br>
+                    start->next = temp; <br> <br>
+                } <br> <br>
+            } <br> <br>
+             
+            // Function to check is list is empty <br> <br>
+            int isEmpty(Node** head) <br> <br>
+            { <br> <br>
+                return (*head) == NULL; <br> <br>
+            } <br> <br>
+             
+            // Driver code <br> <br>
+            int main() <br> <br>
+            { <br> <br>
+                 
+                // Create a Priority Queue <br> <br>
+                // 7->4->5->6 <br> <br>
+                Node* pq = newNode(4, 1); <br>
+                push(&pq, 5, 2); <br>
+                push(&pq, 6, 3); <br>
+                push(&pq, 7, 0); <br>
+             
+                while (!isEmpty(&pq)) <br>
+                { <br>
+                    cout << " " << peek(&pq); <br>
+                    pop(&pq); <br>
+                } <br>
+                return 0; <br>
+            } <br>
+             
+            </p>
+        <p id="Doubly ended queue at rear end" >
+            <h1>Doubly ended queue at rear end</h1>
+            If the queue is empty, i.e., front = -1, it is the underflow condition, and we cannot perform the function.  <br>
+
+If the deque has only one element, set rear = -1 and front = -1 <br>
+
+If rear = 0 (rear is at front), then set rear = n - 1 <br>
+
+Else, decrement the rear by 1 (or, rear = rear -1). <br>
+        </p>
+
+</section>
+        <section id="Linked list">
+          <h1>Linked list</h1>
+          <p id="Singly linked list">Step 1: IF PTR = NULL <br>
+            <h2>Singly linked list</h2>
+            Write OVERFLOW <br>
+                 Go to Step 7 <br>
+                [END OF IF] <br>
+            
+            Step 2: SET NEW_NODE = PTR <br>
+            Step 3: SET PTR = PTR → NEXT <br>
+            Step 4: SET NEW_NODE → DATA = VAL <br>
+            Step 5: SET NEW_NODE → NEXT = HEAD <br>
+            Step 6: SET HEAD = NEW_NODE <br>
+            Step 7: EXIT <br>
+        </p>
+        <p> id="Double linked list">/insert link at the first location <br>
+        void insertFirst(int key, int data) {  <br>
+        
+           //create a link  <br>
+           struct node *link = (struct node*) malloc(sizeof(struct node));  <br>
+           link->key = key;  <br>
+           link->data = data;  <br>
+            
+           if(isEmpty()) {  <br>
+              //make it the last link  <br>
+              last = link;  <br>
+           } else {  <br>
+              //update first prev link  <br>
+              head->prev = link;  <br>
+           }  <br>
+        
+           //point it to old first link  <br>
+           link->next = head;  <br>
+            
+           //point first to new first link  <br>
+           head = link;  <br>
+        
+        </p>
+        <p id="Circular linked list">
+            <h2>Circular linked list</h2> insertFirst(data): <br>
+        Begin <br>
+           create a new node <br>
+           node -> data := data <br>
+           if the list is empty, then <br>
+              head := node <br>
+              next of node = head <br>
+           else <br>
+              temp := head <br>
+              while next of temp is not head, do <br>
+              temp := next of temp <br>
+              done <br>
+              next of node := head <br>
+              next of temp := node <br>
+              head := node <br>
+           end if <br>
+        End <br>
+        </p>
+        <p id="Circular doubly linked list">
+            <h2>Circular doubly linked list</h2> #include<stdio.h> <br>
+            #include<stdlib.h> <br>
+             
+            struct Node <br>
+            { <br>
+                int data; <br>
+                struct Node *next; <br>
+                struct Node *prev; <br>
+            }; <br>
+        </p>
+
+        </section>
+        <section id="Trees">
+            <h1>Trees</h1>
+            <p id="Binary tree">
+                <h2>Binary tree</h2>If root is NULL <br> 
+                then create root node <br>
+             return <br>
+             
+             If root exists then <br>
+                compare the data with node.data <br>
+                
+                while until insertion position is located <br> <br>
+             
+                   If data is greater than node.data <br> <br>
+                      goto right subtree <br> <br>
+                   else <br> <br>
+                      goto left subtree <br> <br>
+             
+                endwhile  <br> <br>
+                
+                insert data <br> <br>
+                 
+             end If       <br> <br>
+            </p>
+            <p id="Binary search tree">
+                <h2>Binary search tree</h2>struct node* search(int data){ <br>
+                struct node *current = root; <br>
+                printf("Visiting elements: "); <br>
+                 
+                while(current->data != data){ <br>
+                 
+                   if(current != NULL) { <br>
+                      printf("%d ",current->data); <br>
+                         
+                      //go to left tree <br>
+                      if(current->data > data){ <br>
+                         current = current->leftChild; <br>
+                      }  //else go to right tree <br>
+                      else {                 <br>
+                         current = current->rightChild; <br>
+                      } <br>
+                         </p>
+            <p id="AVL trees">
+                <h2>AVL trees</h2>L L rotation: Inserted node is in the left subtree of left subtree of A <br>
+                R R rotation : Inserted node is in the right subtree of right subtree of A <br>
+                L R rotation : Inserted node is in the right subtree of left subtree of A <br>
+                R L rotation : Inserted node is in the left subtree of right subtree of A <br>
+                Where node A is the node whose balance Factor is other than -1, 0, 1. <br>
+            </p>
+            <p id="B tree">
+                <h2>B tree</h2>Locate the leaf node. <br>
+                If there are more than m/2 keys in the leaf node then delete the desired key from the node. <br>
+                If the leaf node doesn't contain m/2 keys then complete the keys by taking the element from eight or left sibling. <br>
+                If the left sibling contains more than m/2 elements then push its largest element up to its parent and move the intervening element down to the node where the key is deleted. <br>
+                If the right sibling contains more than m/2 elements then push its smallest element up to the parent and move intervening element down to the node where the key is deleted. <br>
+                If neither of the sibling contain more than m/2 elements then create a new leaf node by joining two leaf nodes and the intervening element of the parent node. <br>
+                If parent is left with less than m/2 nodes then, apply the above process on the parent too.br <br>
+            </p>
+
+        </section>
+         
+        <section id="Sorting">
+            <h1>Sorting</h1>
+            <p id="Merge sort">
+                <h2>Merge sort</h2>Step 1 − if it is only one element in the list it is already sorted, return. <br>
+                Step 2 − divide the list recursively into two halves until it can no more be divided. <br>
+                Step 3 − merge the smaller lists into new list in sorted order. <br>
+                procedure mergesort( var a as array ) <br>
+   if ( n == 1 ) return a <br>
+
+   var l1 as array = a[0] ... a[n/2] <br>
+   var l2 as array = a[n/2+1] ... a[n] <br>
+
+   l1 = mergesort( l1 ) <br>
+   l2 = mergesort( l2 ) <br>
+
+   return merge( l1, l2 ) <br>
+end procedure <br>
+
+procedure merge( var a as array, var b as array ) <br>
+
+   var c as array <br>
+   while ( a and b have elements ) <br>
+      if ( a[0] > b[0] ) <br>
+         add b[0] to the end of c <br>
+         remove b[0] from b <br>
+      else <br>
+         add a[0] to the end of c <br>
+         remove a[0] from a <br>
+      end if <br>
+   end while <br>
+   
+   while ( a has elements ) <br>
+      add a[0] to the end of c <br>
+      remove a[0] from a <br>
+   end while <br>
+   
+   while ( b has elements ) <br>
+      add b[0] to the end of c <br>
+      remove b[0] from b <br>
+   end while <br>
+   
+   return c <br>
+	
+end procedure <br>
+            
+        </p>
+        <p id="Insertion sort">
+            <h2>Insertion sort</h2>Step 1 - If the element is the first element, assume that it is already sorted. Return 1. <br>
+
+            Step2 - Pick the next element, and store it separately in a key. <br>
+            
+            Step3 - Now, compare the key with all elements in the sorted array. <br>
+            
+            Step 4 - If the element in the sorted array is smaller than the current element, then move to the next element. Else, shift greater elements in the array towards the right.
+            
+            Step 5 - Insert the value. <br>
+            
+            Step 6 - Repeat until the array is sorted. <br>
+            </p>
+            <p id="Selection sort">
+                <h2>Selection sort</h2>Step 1 − Set MIN to location 0 <br>
+                Step 2 − Search the minimum element in the list <br>
+                Step 3 − Swap with value at location MIN <br>
+                Step 4 − Increment MIN to point to next element <br>
+                Step 5 − Repeat until list is sorted <br>
+            </p>
+            <p id="Heap sort">
+                <h2>Heap sort</h2>HeapSort(arr)   <br>
+                BuildMaxHeap(arr)   <br>
+                for i = length(arr) to 2   <br>
+                    swap arr[1] with arr[i]   <br>
+                        heap_size[arr] = heap_size[arr] ? 1   <br>
+                        MaxHeapify(arr,1)   <br>
+                End   <br>
+                BuildMaxHeap(arr) <br>
+                
+                BuildMaxHeap(arr)  <br>
+                    heap_size(arr) = length(arr)  <br>
+                    for i = length(arr)/2 to 1  <br>
+                MaxHeapify(arr,i)  <br>
+                End  <br>
+                MaxHeapify(arr,i)<br>
+                
+                MaxHeapify(arr,i)  <br>
+                L = left(i)  <br>
+                R = right(i)  <br>
+                if L ? heap_size[arr] and arr[L] > arr[i]  <br>
+                largest = L  <br>
+                else  <br>
+                largest = i  <br>
+                if R ? heap_size[arr] and arr[R] > arr[largest] <br> 
+                largest = R  <br>
+                if largest != i  <br>
+                swap arr[i] with arr[largest]  <br>
+                MaxHeapify(arr,largest)  <br>
+                End   <br>
+            </p>
+        </section>
+        <footer > <p>THANK YOU FOR VISITING MY SITE</p></footer>
+
+        <a href="#">Back to top</a>
+
+        
+        
+    </main>
+
+</body>
+
+</html>
